@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Computecnoligi | Tienda, Mantenimiento y Asistencia Remota</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Space Grotesk', sans-serif; background: #0a0c10; color: #eef4ff; overflow-x: hidden; }
+        .tech-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(#00b4d8 1px, transparent 1px), linear-gradient(90deg, #00b4d8 1px, transparent 1px); background-size: 45px 45px; opacity: 0.07; pointer-events: none; z-index: 0; }
+        .wrapper { position: relative; z-index: 2; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 28px; }
+        .navbar { backdrop-filter: blur(14px); background: rgba(10, 12, 16, 0.85); border-bottom: 1px solid rgba(0, 180, 216, 0.4); position: sticky; top: 0; z-index: 100; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .logo i { font-size: 2.2rem; color: #00f2fe; text-shadow: 0 0 8px #00b4d8; }
+        .logo h1 { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, #00f2fe, #4facfe); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; align-items: center; }
+        .nav-links a { text-decoration: none; font-weight: 600; color: #ccdeee; transition: 0.3s; }
+        .nav-links a:hover { color: #00f2fe; }
+        .btn-neon { background: rgba(0, 180, 216, 0.15); border: 1px solid #00b4d8; padding: 6px 18px; border-radius: 60px; color: #00f2fe !important; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.5rem; }
+        .cart-count { position: absolute; top: -8px; right: -12px; background: #ffb703; color: #0a0c10; font-size: 0.7rem; font-weight: bold; border-radius: 50%; padding: 2px 6px; min-width: 18px; text-align: center; }
+        .hero { padding: 4rem 0 5rem; }
+        .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; }
+        .hero-text { flex: 1.2; }
+        .chip { background: rgba(0, 180, 216, 0.2); display: inline-block; padding: 6px 18px; border-radius: 50px; font-size: 0.8rem; backdrop-filter: blur(5px); border: 1px solid #00b4d8; margin-bottom: 1rem; }
+        .hero-text h2 { font-size: 3rem; font-weight: 700; line-height: 1.2; background: linear-gradient(145deg, #ffffff, #90e0ef); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero-text p { font-size: 1.2rem; color: #b9d6f2; margin: 1.5rem 0; }
+        .hero-buttons { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+        .btn-primary-neon { background: linear-gradient(95deg, #0077b6, #00b4d8); border: none; padding: 12px 28px; border-radius: 40px; font-weight: 700; color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; box-shadow: 0 0 12px rgba(0,180,216,0.5); }
+        .btn-primary-neon:hover { transform: translateY(-3px); box-shadow: 0 0 24px #00b4d8; }
+        .btn-glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(8px); border: 1px solid rgba(0,180,216,0.6); padding: 10px 26px; border-radius: 40px; font-weight: 500; color: #ccf4ff; text-decoration: none; }
+        .hero-3d { flex: 0.9; text-align: center; }
+        .orb { width: 260px; height: 260px; background: radial-gradient(circle at 30% 30%, rgba(0,180,216,0.3), rgba(2,62,138,0.5)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 0 50px #00b4d880; animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+        .orb i { font-size: 7rem; color: #ccf4ff; }
+        .glass-card { background: rgba(20, 30, 45, 0.55); backdrop-filter: blur(12px); border: 1px solid rgba(0, 180, 216, 0.3); border-radius: 32px; padding: 1.5rem; text-align: center; }
+        .catalogo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .product-card { background: rgba(12, 20, 28, 0.8); backdrop-filter: blur(8px); border-radius: 32px; border: 1px solid rgba(0, 180, 216, 0.3); padding: 1.5rem; transition: transform 0.25s ease; text-align: center; }
+        .product-card:hover { transform: translateY(-6px); border-color: #00f2fe; }
+        .product-icon { font-size: 3rem; color: #00f2fe; margin-bottom: 1rem; }
+        .product-title { font-size: 1.4rem; font-weight: 700; }
+        .product-desc { font-size: 0.85rem; color: #b9d6f2; margin: 0.5rem 0; }
+        .product-price { font-size: 1.3rem; font-weight: 800; color: #00f2fe; margin: 0.7rem 0; }
+        .btn-add { background: rgba(0, 180, 216, 0.2); border: 1px solid #00b4d8; padding: 8px 16px; border-radius: 40px; color: white; font-weight: 600; cursor: pointer; width: 100%; transition: 0.2s; }
+        .btn-add:hover { background: #00b4d8; color: #0a0c10; }
+        .achievements-section { background: linear-gradient(135deg, #07161f, #0a202b); border-radius: 48px; padding: 3rem 2rem; margin: 2rem 0; border: 1px solid rgba(0, 180, 216, 0.4); }
+        .section-title { text-align: center; font-size: 2.4rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(120deg, #e0f2fe, #a9d6e5); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .section-sub { text-align: center; color: #9bb9d4; margin-bottom: 2rem; }
+        .stats-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 3rem; }
+        .stat-card { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); border-radius: 32px; padding: 1.5rem 2rem; text-align: center; min-width: 160px; border: 1px solid rgba(0, 180, 216, 0.3); }
+        .stat-number { font-size: 2.8rem; font-weight: 800; color: #00f2fe; }
+        .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .brand-item { background: rgba(255, 255, 255, 0.05); border-radius: 28px; padding: 1.2rem; text-align: center; transition: all 0.3s; border: 1px solid rgba(0, 180, 216, 0.2); }
+        .brand-item:hover { background: rgba(0, 180, 216, 0.15); transform: scale(1.03); }
+        .brand-item i { font-size: 2.5rem; color: #00f2fe; margin-bottom: 0.8rem; }
+        .remote-support-btn { position: fixed; bottom: 30px; left: 30px; background: linear-gradient(135deg, #0f2c3b, #0077b6); width: 75px; height: 75px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(0,180,216,0.7); cursor: pointer; z-index: 1000; border: 2px solid #00f2fe; animation: pulseGlow 2s infinite; position: relative; }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(0,180,216,0.5); } 70% { box-shadow: 0 0 0 15px rgba(0,180,216,0); } 100% { box-shadow: 0 0 0 0 rgba(0,180,216,0); } }
+        .remote-support-btn i { font-size: 2.5rem; color: white; }
+        .remote-support-btn .remote-badge { position: absolute; bottom: 5px; right: 8px; background: #ffb703; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border: 1px solid #0a0c10; }
+        .cart-sidebar { position: fixed; top: 0; right: -450px; width: 400px; height: 100vh; background: #0f172ad9; backdrop-filter: blur(20px); border-left: 2px solid #00b4d8; z-index: 1000; transition: right 0.3s ease; padding: 1.5rem; display: flex; flex-direction: column; }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #00b4d8; padding-bottom: 1rem; }
+        .cart-items { flex: 1; overflow-y: auto; margin: 1rem 0; }
+        .cart-item { display: flex; justify-content: space-between; background: rgba(0,0,0,0.4); margin-bottom: 0.8rem; padding: 0.8rem; border-radius: 20px; }
+        .cart-total { border-top: 1px solid #00b4d8; padding-top: 1rem; font-size: 1.3rem; font-weight: bold; }
+        .btn-cotizar { background: #25d366; color: #0a0c10; font-weight: bold; margin-top: 1rem; padding: 12px; border-radius: 40px; text-align: center; cursor: pointer; }
+        .btn-empty { background: rgba(255,80,80,0.3); margin-top: 0.5rem; padding: 8px; border-radius: 40px; text-align: center; cursor: pointer; }
+        .cta-neon { background: linear-gradient(125deg, #001d2e, #020f1a); border-radius: 50px; padding: 2.5rem; margin: 3rem 0; text-align: center; border: 1px solid #00b4d8; }
+        .numero-destacado { font-size: 1.7rem; font-weight: 800; background: #00b4d8; display: inline-block; padding: 6px 20px; border-radius: 60px; color: #0a0c10; margin: 10px 0; }
+        footer { background: #03070e; border-top: 1px solid #00b4d8; padding: 2rem 0; text-align: center; }
+        .admin-panel-hidden { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 1200px; max-height: 85vh; background: #0a0c10ee; backdrop-filter: blur(20px); border: 2px solid #00f2fe; border-radius: 48px; z-index: 2000; padding: 1.5rem; overflow-y: auto; }
+        .admin-panel-hidden.active { display: block; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .form-producto { background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 32px; margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border-radius: 28px; border: 1px solid #00b4d8; background: rgba(255,255,255,0.1); color: white; }
+        .admin-table { overflow-x: auto; }
+        .admin-table table { width: 100%; border-collapse: collapse; }
+        .admin-table th, .admin-table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(0,180,216,0.3); }
+        .btn-editar, .btn-eliminar { padding: 6px 12px; border-radius: 30px; border: none; cursor: pointer; margin: 0 4px; }
+        .btn-editar { background: #ffb703; color: #0a0c10; }
+        .btn-eliminar { background: #dc2f02; color: white; }
+        .btn-guardar { background: #00b4d8; color: #0a0c10; padding: 10px 24px; border-radius: 40px; border: none; cursor: pointer; font-weight: bold; }
+        .close-admin { background: #ff4d4d; border: none; padding: 8px 18px; border-radius: 40px; color: white; cursor: pointer; }
+        .admin-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index: 1999; }
+        .admin-overlay.active { display: block; }
+        @media (max-width: 700px) { .hero-text h2 { font-size: 2rem; } .cart-sidebar { width: 100%; } .remote-support-btn { width: 60px; height: 60px; } .stats-grid { gap: 1rem; } .stat-card { padding: 1rem; min-width: 120px; } .stat-number { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+<div class="tech-bg"></div>
+<div class="wrapper">
+    <div class="navbar">
+        <div class="container nav-flex">
+            <div class="logo" id="secretLogo"><i class="fas fa-microchip"></i><h1>COMPUTECNOLIGI</h1></div>
+            <ul class="nav-links"><li><a href="#servicios">Servicios</a></li><li><a href="#logros">Logros</a></li><li><a href="#tienda">Tienda</a></li><li><a href="#contacto" class="btn-neon">Contacto</a></li><li class="cart-icon" id="openCartBtn"><i class="fas fa-shopping-cart"></i><span id="cartCount" class="cart-count">0</span></li></ul>
+        </div>
+    </div>
+    <section class="hero"><div class="container hero-grid"><div class="hero-text"><div class="chip"><i class="fas fa-trophy"></i> Logros y certificaciones</div><h2>Expertos en <span style="color:#00f2fe;">tecnología</span><br>Con respaldo de las mejores marcas</h2><p>+10 años de experiencia, cientos de clientes satisfechos y alianzas con las marcas líderes del sector.</p><div class="hero-buttons"><a href="#tienda" class="btn-primary-neon"><i class="fas fa-cart-plus"></i> Ver tienda</a><a href="#logros" class="btn-glass"><i class="fas fa-award"></i> Nuestros logros</a></div><div style="margin-top:20px"><span class="btn-glass"><i class="fas fa-phone-alt"></i> Atención: <strong>446 253 0224</strong></span></div></div><div class="hero-3d"><div class="orb"><i class="fas fa-medal"></i></div></div></div></section>
+    <div class="container" id="logros"><div class="achievements-section"><h2 class="section-title"><i class="fas fa-chart-line"></i> Nuestros logros en números</h2><p class="section-sub">Respaldo que nos convierte en tu mejor opción</p><div class="stats-grid"><div class="stat-card"><div class="stat-number">+10</div><div class="stat-label">Años de experiencia</div></div><div class="stat-card"><div class="stat-number">+5,000</div><div class="stat-label">Equipos reparados</div></div><div class="stat-card"><div class="stat-number">98%</div><div class="stat-label">Clientes satisfechos</div></div><div class="stat-card"><div class="stat-number">24/7</div><div class="stat-label">Soporte remoto</div></div></div><h3 class="section-title" style="font-size:1.8rem"><i class="fas fa-handshake"></i> Marcas que confían en nosotros</h3><div class="brands-grid"><div class="brand-item"><i class="fab fa-windows"></i><h4>Microsoft</h4><p>Partner certificado</p></div><div class="brand-item"><i class="fas fa-microchip"></i><h4>Intel</h4><p>Premium Provider</p></div><div class="brand-item"><i class="fas fa-microchip"></i><h4>AMD</h4><p>Ryzen Expert</p></div><div class="brand-item"><i class="fas fa-print"></i><h4>HP</h4><p>Service Partner</p></div><div class="brand-item"><i class="fas fa-print"></i><h4>Epson</h4><p>Centro autorizado</p></div><div class="brand-item"><i class="fas fa-desktop"></i><h4>Lenovo</h4><p>ThinkPad Expert</p></div><div class="brand-item"><i class="fas fa-laptop"></i><h4>Dell</h4><p>ProSupport</p></div><div class="brand-item"><i class="fas fa-gamepad"></i><h4>NVIDIA</h4><p>GeForce Partner</p></div></div></div></div>
+    <div class="container" id="servicios"><h2 class="section-title">⚡ Nuestros servicios</h2><div style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; margin-bottom:3rem;"><div class="glass-card" style="width:260px"><i class="fas fa-desktop" style="font-size:2.5rem; color:#00f2fe;"></i><h3>Mantenimiento PC</h3><p>Limpieza, optimización, cambio de pasta térmica.</p></div><div class="glass-card" style="width:260px"><i class="fas fa-print" style="font-size:2.5rem; color:#00f2fe;"></i><h3>Impresoras</h3><p>Cabezales, sistema continuo, calibración.</p></div><div class="glass-card" style="width:260px"><i class="fas fa-headset" style="font-size:2.5rem; color:#00f2fe;"></i><h3>Soporte Remoto</h3><p>Asistencia en vivo, control remoto.</p></div></div></div>
+    <div class="container" id="tienda"><h2 class="section-title"><i class="fas fa-store"></i> Nuestros productos</h2><p class="section-sub">Selecciona los artículos y genera tu cotización</p><div id="tiendaProductos" class="catalogo-grid"><div style="text-align:center; padding:2rem;">Cargando productos...</div></div></div>
+    <div class="container" id="contacto"><div class="cta-neon"><i class="fas fa-comment-dots" style="font-size:2.5rem;"></i><h2>¿Necesitas ayuda con tu equipo?</h2><div class="numero-destacado">📞 446 253 0224</div><p>Contáctanos por WhatsApp para soporte remoto o cotización de productos.</p></div></div>
+    <footer><div class="container">© 2025 Computecnoligi - Mantenimiento de PCs, impresoras y venta de accesorios. Asistencia remota disponible. <i class="fas fa-trophy"></i> Más de 10 años de experiencia</div></footer>
+</div>
+<div id="remoteSupportBtn" class="remote-support-btn"><i class="fas fa-desktop"></i><div class="remote-badge"><i class="fas fa-headset"></i></div></div>
+<div id="cartSidebar" class="cart-sidebar"><div class="cart-header"><h3><i class="fas fa-shopping-cart"></i> Cotización</h3><button class="close-cart" id="closeCartBtn">&times;</button></div><div id="cartItemsList" class="cart-items">Carrito vacío</div><div class="cart-total">Total: $<span id="cartTotal">0</span> MXN</div><button id="sendQuoteBtn" class="btn-cotizar"><i class="fab fa-whatsapp"></i> Cotizar por WhatsApp</button><button id="emptyCartBtn" class="btn-empty">Vaciar carrito</button></div>
+<div id="adminOverlay" class="admin-overlay"></div>
+<div id="adminPanel" class="admin-panel-hidden"><div class="admin-header"><h2>Administrar Catálogo</h2><button id="closeAdminBtn" class="close-admin">Cerrar</button></div><div class="form-producto"><h3 id="formTitle">Agregar Producto</h3><div class="form-group"><input type="text" id="prodNombre" placeholder="Nombre"></div><div class="form-group"><textarea id="prodDesc" rows="2" placeholder="Descripción"></textarea></div><div class="form-group"><input type="number" id="prodPrecio" placeholder="Precio"></div><div class="form-group"><input type="text" id="prodIcono" placeholder="Icono" value="fa-microchip"></div><input type="hidden" id="editId"><button id="saveProductBtn" class="btn-guardar">Guardar</button><button id="cancelEditBtn" style="display:none;">Cancelar</button></div><div class="admin-table"><h3>Productos</h3><table><thead><tr><th>Nombre</th><th>Descripción</th><th>Precio</th><th>Acciones</th></tr></thead><tbody id="tablaBody"></tbody></table></div></div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+    const API_URL = '/api/productos';
+    let productos = [], cart = [];
+
+    async function cargarProductos() {
+        try {
+            const res = await fetch(API_URL);
+            productos = await res.json();
+            renderTienda();
+            if(window.adminModeActive) renderTablaAdmin();
+        } catch(e) { console.error('Error cargando productos:', e); }
+    }
+
+    function renderTienda() {
+        const container = document.getElementById('tiendaProductos');
+        if(!productos.length) { container.innerHTML = '<p style="text-align:center;">No hay productos</p>'; return; }
+        container.innerHTML = '';
+        productos.forEach(prod => {
+            const card = document.createElement('div'); card.className = 'product-card';
+            card.innerHTML = `<div class="product-icon"><i class="fas ${prod.icono || 'fa-microchip'}"></i></div><div class="product-title">${prod.nombre}</div><div class="product-desc">${prod.descripcion || ''}</div><div class="product-price">$${prod.precio.toLocaleString()} MXN</div><button class="btn-add" data-id="${prod.id}"><i class="fas fa-cart-plus"></i> Agregar</button>`;
+            container.appendChild(card);
+        });
+        document.querySelectorAll('.btn-add').forEach(btn => btn.addEventListener('click', (e) => { addToCart(parseInt(btn.dataset.id)); }));
+    }
+
+    function addToCart(id) {
+        const prod = productos.find(p => p.id === id);
+        if(!prod) return;
+        const existing = cart.find(i => i.id === id);
+        if(existing) existing.quantity++;
+        else cart.push({ ...prod, quantity: 1 });
+        updateCartUI();
+        showCartSidebar();
+    }
+
+    function updateCartUI() {
+        const container = document.getElementById('cartItemsList');
+        const totalSpan = document.getElementById('cartTotal');
+        const countSpan = document.getElementById('cartCount');
+        if(cart.length === 0) { container.innerHTML = '<p>Carrito vacío</p>'; totalSpan.innerText='0'; countSpan.innerText='0'; return; }
+        let total=0, items=0; container.innerHTML='';
+        cart.forEach((item, idx) => {
+            const sub = item.precio * item.quantity;
+            total += sub; items += item.quantity;
+            const div = document.createElement('div'); div.className='cart-item';
+            div.innerHTML = `<div><strong>${item.nombre}</strong><br>$${item.precio.toLocaleString()} x ${item.quantity} = $${sub.toLocaleString()}</div><div><button class="remove-one" data-idx="${idx}">-1</button> <button class="delete-item" data-idx="${idx}">🗑️</button></div>`;
+            container.appendChild(div);
+        });
+        totalSpan.innerText = total.toLocaleString();
+        countSpan.innerText = items;
+        document.querySelectorAll('.remove-one').forEach(btn => btn.addEventListener('click', (e) => { const idx = parseInt(btn.dataset.idx); const id = cart[idx].id; const existing = cart.find(i => i.id === id); if(existing.quantity > 1) existing.quantity--; else cart.splice(idx,1); updateCartUI(); }));
+        document.querySelectorAll('.delete-item').forEach(btn => btn.addEventListener('click', (e) => { const idx = parseInt(btn.dataset.idx); cart.splice(idx,1); updateCartUI(); }));
+    }
+
+    function showCartSidebar() { document.getElementById('cartSidebar').classList.add('open'); }
+    function closeCartSidebar() { document.getElementById('cartSidebar').classList.remove('open'); }
+    function sendQuote() {
+        if(cart.length===0){alert("Agrega productos para cotizar.");return;}
+        let msg = "📦 *Cotización Computecnoligi*%0A"; let total=0;
+        cart.forEach(i => { const sub=i.precio*i.quantity; total+=sub; msg += `✔ ${i.nombre} x${i.quantity} = $${sub.toLocaleString()} MXN%0A`; });
+        msg += `%0A💰 *Total: $${total.toLocaleString()} MXN*%0A%0A📞 Tel: 446 253 0224%0A🔧 *Marcas aliadas:* Intel, AMD, HP, Epson, Lenovo, Dell, NVIDIA y más.`;
+        window.open(`https://wa.me/5214462530224?text=${msg}`, '_blank');
+    }
+    function emptyCart() { cart=[]; updateCartUI(); closeCartSidebar(); }
+
+    let clickCount=0, timeout;
+    document.getElementById('secretLogo').addEventListener('click', () => { clickCount++; clearTimeout(timeout); timeout=setTimeout(()=>clickCount=0,1000); if(clickCount===5){ showAdmin(); clickCount=0; } });
+    async function showAdmin() { document.getElementById('adminPanel').classList.add('active'); document.getElementById('adminOverlay').classList.add('active'); window.adminModeActive=true; await cargarProductos(); renderTablaAdmin(); }
+    function hideAdmin() { document.getElementById('adminPanel').classList.remove('active'); document.getElementById('adminOverlay').classList.remove('active'); window.adminModeActive=false; }
+    function renderTablaAdmin() { const tbody=document.getElementById('tablaBody'); if(!tbody) return; tbody.innerHTML=''; productos.forEach(prod=>{ const row=tbody.insertRow(); row.insertCell(0).innerText=prod.nombre; row.insertCell(1).innerText=prod.descripcion?.substring(0,40)||''; row.insertCell(2).innerText=`$${prod.precio}`; const cell=row.insertCell(3); const editBtn=document.createElement('button'); editBtn.innerText='Editar'; editBtn.className='btn-editar'; editBtn.onclick=()=>editarProducto(prod.id); const delBtn=document.createElement('button'); delBtn.innerText='Eliminar'; delBtn.className='btn-eliminar'; delBtn.onclick=()=>eliminarProducto(prod.id); cell.appendChild(editBtn); cell.appendChild(delBtn); }); }
+    function editarProducto(id){ const prod=productos.find(p=>p.id===id); if(prod){ document.getElementById('prodNombre').value=prod.nombre; document.getElementById('prodDesc').value=prod.descripcion||''; document.getElementById('prodPrecio').value=prod.precio; document.getElementById('prodIcono').value=prod.icono||'fa-microchip'; document.getElementById('editId').value=prod.id; document.getElementById('formTitle').innerText='Editar Producto'; document.getElementById('cancelEditBtn').style.display='inline-block'; } }
+    async function eliminarProducto(id){ if(confirm('¿Eliminar este producto?')){ await fetch(`${API_URL}/${id}`,{method:'DELETE'}); cargarProductos(); } }
+    async function guardarProducto(){ const nombre=document.getElementById('prodNombre').value.trim(); const desc=document.getElementById('prodDesc').value; const precio=parseFloat(document.getElementById('prodPrecio').value); const icono=document.getElementById('prodIcono').value.trim()||'fa-microchip'; const editId=document.getElementById('editId').value; if(!nombre||isNaN(precio)){alert('Nombre y precio requeridos');return;} const body={nombre,descripcion:desc,precio,icono}; let url=API_URL, method='POST'; if(editId){ url=`${API_URL}/${editId}`; method='PUT'; } const res=await fetch(url,{method,headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); if(res.ok){ cargarProductos(); limpiarForm(); }else{alert('Error al guardar');} }
+    function limpiarForm(){ document.getElementById('prodNombre').value=''; document.getElementById('prodDesc').value=''; document.getElementById('prodPrecio').value=''; document.getElementById('prodIcono').value='fa-microchip'; document.getElementById('editId').value=''; document.getElementById('formTitle').innerText='Agregar Producto'; document.getElementById('cancelEditBtn').style.display='none'; }
+
+    document.getElementById('saveProductBtn').addEventListener('click',guardarProducto);
+    document.getElementById('cancelEditBtn').addEventListener('click',limpiarForm);
+    document.getElementById('closeAdminBtn').addEventListener('click',hideAdmin);
+    document.getElementById('adminOverlay').addEventListener('click',hideAdmin);
+    document.getElementById('openCartBtn').addEventListener('click',showCartSidebar);
+    document.getElementById('closeCartBtn').addEventListener('click',closeCartSidebar);
+    document.getElementById('sendQuoteBtn').addEventListener('click',sendQuote);
+    document.getElementById('emptyCartBtn').addEventListener('click',emptyCart);
+    document.getElementById('remoteSupportBtn').addEventListener('click',()=>window.open('https://wa.me/5214462530224?text=Hola%20necesito%20asistencia%20remota%20para%20mi%20computadora','_blank'));
+
+    cargarProductos();
+</script>
+</body>
+</html>
